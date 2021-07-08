@@ -1,6 +1,6 @@
 {
     "name": "spatie/commonmark-shiki-highlighter",
-    "description": "This is my package CommonmarkShikiHighlighter",
+    "description": "Highlight code blocks with league/commonmark and Shiki",
     "keywords": [
         "spatie",
         "commonmark-shiki-highlighter"
@@ -15,22 +15,23 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "league/commonmark": "^1.6",
+        "spatie/shiki-php": "^0.0.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
         "phpunit/phpunit": "^9.5",
-        "spatie/ray": "^1.10",
-        "vimeo/psalm": "^4.3"
+        "spatie/ray": "^1.10"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\CommonmarkShikiHighlighter\\": "src"
+            "Spatie\\CommonMarkShikiHighlighter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\CommonmarkShikiHighlighter\\Tests\\": "tests"
+            "Spatie\\CommonMarkShikiHighlighter\\Tests\\": "tests"
         }
     },
     "scripts": {

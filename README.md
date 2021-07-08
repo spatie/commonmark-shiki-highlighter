@@ -1,4 +1,4 @@
-# This is my package CommonmarkShikiHighlighter
+# Highlight code blocks with league/commonmark and Shiki
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/commonmark-shiki-highlighter/run-tests?label=tests)](https://github.com/spatie/commonmark-shiki-highlighter/actions?query=workflow%3ATests+branch%3Amaster)

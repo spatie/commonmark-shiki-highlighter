@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\CommonmarkShikiHighlighter\Tests;
+namespace Spatie\CommonMarkShikiHighlighter\Tests;
 
 use PHPUnit\Framework\TestCase;
 
