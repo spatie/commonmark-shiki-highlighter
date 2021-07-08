@@ -1,16 +1,16 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "spatie/commonmark-shiki-highlighter",
+    "description": "This is my package CommonmarkShikiHighlighter",
     "keywords": [
-        ":vendor_name",
-        "package_slug"
+        "spatie",
+        "commonmark-shiki-highlighter"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/spatie/commonmark-shiki-highlighter",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Spatie\\CommonmarkShikiHighlighter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Spatie\\CommonmarkShikiHighlighter\\Tests\\": "tests"
         }
     },
     "scripts": {

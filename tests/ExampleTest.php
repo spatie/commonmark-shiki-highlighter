@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Spatie\CommonmarkShikiHighlighter\Tests;
 
 use PHPUnit\Framework\TestCase;
 
