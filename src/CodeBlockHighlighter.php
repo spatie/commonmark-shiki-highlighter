@@ -27,7 +27,6 @@ class CodeBlockHighlighter
 
         try {
             return $this->shiki->highlightCode($contents, $language, $theme);
-
         } catch (Exception) {
             return $contents;
         }
