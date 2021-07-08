@@ -35,8 +35,8 @@ composer require spatie/commonmark-shiki-highlighter
 ## Usage
 
 ```php
-$commonmark-shiki-highlighter = new Spatie\CommonmarkShikiHighlighter();
-echo $commonmark-shiki-highlighter->echoPhrase('Hello, Spatie!');
+$commonmarkShikiHighlighter = new Spatie\CommonmarkShikiHighlighter();
+echo $commonmarkShikiHighlighter->echoPhrase('Hello, Spatie!');
 ```
 
 ## Testing
