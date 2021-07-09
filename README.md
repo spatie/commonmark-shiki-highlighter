@@ -6,7 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
 
 ---
-This package can be used as to scaffold a Laravel package. Follow these steps to get started:
+This package can be used to scaffold a Laravel package. Follow these steps to get started:
 
 1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this commonmark-shiki-highlighter
 2. Run "./configure.sh" to run a script that will replace all placeholders throughout all the files
