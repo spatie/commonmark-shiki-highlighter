@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\CommonMarkShikiHighlighter;
+namespace Spatie\CommonMarkShikiHighlighter\Renderers;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\FencedCode;
@@ -8,16 +8,18 @@ use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\Block\Renderer\FencedCodeRenderer as BaseFencedCodeRenderer;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Util\Xml;
+use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
+use function dd;
 
 class FencedCodeRenderer implements BlockRendererInterface
 {
-    protected CodeBlockHighlighter $highlighter;
+    protected ShikiHighlighter $highlighter;
 
     protected BaseFencedCodeRenderer $baseRenderer;
 
-    public function __construct()
+    public function __construct(ShikiHighlighter $codeBlockHighlighter)
     {
-        $this->highlighter = new CodeBlockHighlighter();
+        $this->highlighter = $codeBlockHighlighter;
 
         $this->baseRenderer = new BaseFencedCodeRenderer();
     }
@@ -25,6 +27,7 @@ class FencedCodeRenderer implements BlockRendererInterface
     public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
     {
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
+        ray($element->getContents())->blue();
 
         $element->setContents(
             $this->highlighter->highlight(
@@ -32,6 +35,8 @@ class FencedCodeRenderer implements BlockRendererInterface
                 $this->getSpecifiedLanguage($block)
             )
         );
+
+        ray($element->getContents())->blue();
 
         return $element;
     }

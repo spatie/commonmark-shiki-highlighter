@@ -1,21 +1,23 @@
 <?php
 
-namespace Spatie\CommonMarkShikiHighlighter;
+namespace Spatie\CommonMarkShikiHighlighter\Renderers;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\Block\Renderer\IndentedCodeRenderer as BaseIndentedCodeRenderer;
 use League\CommonMark\ElementRendererInterface;
+use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
+use function dd;
 
 class IndentedCodeRenderer implements BlockRendererInterface
 {
-    protected CodeBlockHighlighter $highlighter;
+    protected ShikiHighlighter $highlighter;
 
     protected BaseIndentedCodeRenderer $baseRenderer;
 
-    public function __construct()
+    public function __construct(ShikiHighlighter $codeBlockHighlighter)
     {
-        $this->highlighter = new CodeBlockHighlighter();
+        $this->highlighter = $codeBlockHighlighter;
 
         $this->baseRenderer = new BaseIndentedCodeRenderer();
     }
@@ -25,6 +27,8 @@ class IndentedCodeRenderer implements BlockRendererInterface
         ElementRendererInterface $htmlRenderer,
         $inTightList = false
     ) {
+
+        ray('indented render');
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
 
         $element->setContents(

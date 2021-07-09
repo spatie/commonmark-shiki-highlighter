@@ -5,16 +5,14 @@ namespace Spatie\CommonMarkShikiHighlighter;
 use Exception;
 use Spatie\ShikiPhp\Shiki;
 
-class CodeBlockHighlighter
+class ShikiHighlighter
 {
-    protected Shiki $shiki;
-
-    public function __construct()
+    public function __construct(protected Shiki $shiki)
     {
-        $this->shiki = new Shiki();
+
     }
 
-    public function highlight(string $codeBlock, ?string $infoLine = null)
+    public function highlight(string $codeBlock, ?string $infoLine = null): string
     {
         $codeBlockWithoutTags = strip_tags($codeBlock);
 
@@ -23,16 +21,19 @@ class CodeBlockHighlighter
         $definition = $this->parseLangAndLines($infoLine);
 
         $language = $definition['lang'] ?? 'php';
-        $theme = $definition['theme'] ?? 'nord';
 
         try {
-            return $this->shiki->highlightCode($contents, $language, $theme);
+            $highlightedContents = $this->shiki->highlightCode($contents, $language);
+
+            ray($highlightedContents);
+
+            return $highlightedContents;
         } catch (Exception) {
             return $contents;
         }
     }
 
-    protected function parseLangAndLines(?string $language)
+    protected function parseLangAndLines(?string $language): array
     {
         $parsed = [
             'lang' => $language,
