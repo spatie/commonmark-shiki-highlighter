@@ -53,7 +53,7 @@ class ShikiHighlighter
         $lineNums = explode(',', $lineDef);
 
         foreach ($lineNums as $lineNum) {
-            if (strpos($lineNum, '-') === false) {
+            if (! str_contains($lineNum, '-')) {
                 $parsed['lines'][intval($lineNum)] = true;
 
                 continue;
@@ -68,7 +68,7 @@ class ShikiHighlighter
             $start = intval($extremes[0]);
             $end = intval($extremes[1]);
 
-            for ($i = $start; $i <= $end; $i++) {
+            foreach (range($start, $end) as $i) {
                 $parsed['lines'][$i] = true;
             }
         }
