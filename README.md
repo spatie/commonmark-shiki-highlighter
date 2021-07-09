@@ -5,7 +5,12 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/commonmark-shiki-highlighter/Check%20&%20fix%20styling?label=code%20style)](https://github.com/spatie/commonmark-shiki-highlighter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
 
-This package contains a block renderer for  [league/commonmark](https://github.com/thephpleague/commonmark) to highlight code blocks using [Shiki PHP](https://github.com/spatie/shiki-php).
+This package contains a block renderer for [league/commonmark](https://github.com/thephpleague/commonmark) to highlight code blocks using [Shiki PHP](https://github.com/spatie/shiki-php).
+
+This package also ships with the following extra languages, on top of the [100+ that Shiki supports](https://github.com/shikijs/shiki/tree/master/docs/languages.md) out of the box:
+
+- Antlers
+- Blade
 
 ## Support us
 
@@ -37,10 +42,29 @@ yarn add shiki
 
 ## Usage
 
+Here's how we can create a function that can convert markdown to HTML with all code snippets highlighted. Inside the function will create a new `CommonMarkConverter` that uses the `HighlightCodeExtension` provided by this package.
+
 ```php
-$commonmarkShikiHighlighter = new Spatie\CommonmarkShikiHighlighter();
-echo $commonmarkShikiHighlighter->echoPhrase('Hello, Spatie!');
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
+
+function convertToHtml(string $markdown, string $theme): string
+{
+    $environment = Environment::createCommonMarkEnvironment()
+        ->addExtension(new HighlightCodeExtension($theme));
+
+    $commonMarkConverter = new CommonMarkConverter(environment: $environment);
+
+    return $commonMarkConverter->convertToHtml($markdown);
+}
 ```
+
+## Using themes
+
+The `$theme` argument on `HighlightCodeExtension` expects the name of [one of the many themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md) that Shiki supports.
+
+Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
 
 ## Testing
 
