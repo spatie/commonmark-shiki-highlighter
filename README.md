@@ -68,7 +68,7 @@ Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](ht
 
 ## A word on performance
 
-Highlighting with Shiki is a resource intensive process. We highly recommend using some form of caching when you use this package on a high traffic website.
+Highlighting with Shiki is a resource intensive process. We highly recommend using some form of caching.
 
 ## Testing
 
