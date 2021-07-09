@@ -7,6 +7,7 @@ use League\CommonMark\Block\Element\FencedCode;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\Block\Renderer\FencedCodeRenderer as BaseFencedCodeRenderer;
 use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\HtmlElement;
 use League\CommonMark\Util\Xml;
 use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
 use function dd;
@@ -24,10 +25,12 @@ class FencedCodeRenderer implements BlockRendererInterface
         $this->baseRenderer = new BaseFencedCodeRenderer();
     }
 
-    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
-    {
+    public function render(
+        AbstractBlock $block,
+        ElementRendererInterface $htmlRenderer,
+        $inTightList = false
+    ): string {
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
-        ray($element->getContents())->blue();
 
         $element->setContents(
             $this->highlighter->highlight(
@@ -36,9 +39,7 @@ class FencedCodeRenderer implements BlockRendererInterface
             )
         );
 
-        ray($element->getContents())->blue();
-
-        return $element;
+        return $element->getContents();
     }
 
     protected function getSpecifiedLanguage(FencedCode $block): ?string

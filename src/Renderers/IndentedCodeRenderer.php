@@ -26,7 +26,7 @@ class IndentedCodeRenderer implements BlockRendererInterface
         AbstractBlock $block,
         ElementRendererInterface $htmlRenderer,
         $inTightList = false
-    ) {
+    ): string {
 
         ray('indented render');
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
@@ -35,6 +35,6 @@ class IndentedCodeRenderer implements BlockRendererInterface
             $this->highlighter->highlight($element->getContents())
         );
 
-        return $element;
+        return $element->getContents();
     }
 }

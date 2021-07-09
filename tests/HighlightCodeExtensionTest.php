@@ -26,13 +26,28 @@ class HighlightCodeExtensionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_highlight_a_piece_of_code()
+    public function it_can_highlight_a_piece_of_fenced_code()
     {
         $markdown = <<<MD
-        Here is a piece of my favourite PHP code
+        Here is a piece of fenced PHP code
         ```php
         <?php echo "Hello World"; ?>
         ```
+        MD;
+
+        $highlightedCode = $this->convertToHtml($markdown);
+
+        $this->assertMatchesSnapshot($highlightedCode);
+    }
+
+    /** @test */
+    public function it_can_highlight_a_piece_of_indented_code()
+    {
+        $markdown = <<<MD
+        Here is a piece of indented PHP code
+
+            <?php echo "Hello World"; ?>
+
         MD;
 
         $highlightedCode = $this->convertToHtml($markdown);
