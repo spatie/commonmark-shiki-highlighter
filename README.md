@@ -66,6 +66,10 @@ The `$theme` argument on `HighlightCodeExtension` expects the name of [one of th
 
 Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
 
+## A word on performance
+
+Highlighting with Shiki is a resource intensive process. We highly recommend using some form of caching when you use this package on a high traffic website.
+
 ## Testing
 
 ```bash
