@@ -14,7 +14,8 @@ class HighlightCodeExtension implements ExtensionInterface
 {
     public function __construct(
         protected string $theme
-    ) {}
+    ) {
+    }
 
     public function register(ConfigurableEnvironmentInterface $environment)
     {

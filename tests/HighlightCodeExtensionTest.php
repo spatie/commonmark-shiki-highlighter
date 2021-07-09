@@ -2,16 +2,10 @@
 
 namespace Spatie\CommonMarkShikiHighlighter\Tests;
 
-use League\CommonMark\Block\Element\FencedCode;
-use League\CommonMark\Block\Element\IndentedCode;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use PHPUnit\Framework\TestCase;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
-use Spatie\CommonMarkShikiHighlighter\Renderers\FencedCodeRenderer;
-use Spatie\CommonMarkShikiHighlighter\Renderers\IndentedCodeRenderer;
-use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
-use Spatie\ShikiPhp\Shiki;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class HighlightCodeExtensionTest extends TestCase
@@ -61,6 +55,7 @@ class HighlightCodeExtensionTest extends TestCase
             ->addExtension(new HighlightCodeExtension('nord'));
 
         $commonMarkConverter = new CommonMarkConverter(environment: $environment);
+
         return $commonMarkConverter->convertToHtml($markdown);
     }
 }

@@ -7,7 +7,6 @@ use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\Block\Renderer\IndentedCodeRenderer as BaseIndentedCodeRenderer;
 use League\CommonMark\ElementRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
-use function dd;
 
 class IndentedCodeRenderer implements BlockRendererInterface
 {
@@ -28,7 +27,6 @@ class IndentedCodeRenderer implements BlockRendererInterface
         $inTightList = false
     ): string {
 
-        ray('indented render');
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
 
         $element->setContents(

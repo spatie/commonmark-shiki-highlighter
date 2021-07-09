@@ -7,10 +7,9 @@ use Spatie\ShikiPhp\Shiki;
 
 class ShikiHighlighter
 {
-    public function __construct(protected Shiki $shiki)
-    {
-
-    }
+    public function __construct(
+        protected Shiki $shiki
+    ) {}
 
     public function highlight(string $codeBlock, ?string $infoLine = null): string
     {
@@ -24,13 +23,11 @@ class ShikiHighlighter
 
         try {
             $highlightedContents = $this->shiki->highlightCode($contents, $language);
-
-            ray($highlightedContents);
-
-            return $highlightedContents;
         } catch (Exception) {
-            return $contents;
+            $highlightedContents = $contents;
         }
+
+        return $highlightedContents;
     }
 
     protected function parseLangAndLines(?string $language): array
