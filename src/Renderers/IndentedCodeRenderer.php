@@ -26,7 +26,6 @@ class IndentedCodeRenderer implements BlockRendererInterface
         ElementRendererInterface $htmlRenderer,
         $inTightList = false
     ): string {
-
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
 
         $element->setContents(
