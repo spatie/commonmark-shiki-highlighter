@@ -9,7 +9,6 @@ use League\CommonMark\Block\Renderer\FencedCodeRenderer as BaseFencedCodeRendere
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Util\Xml;
 use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
-use function dd;
 
 class FencedCodeRenderer implements BlockRendererInterface
 {

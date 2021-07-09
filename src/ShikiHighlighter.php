@@ -9,7 +9,6 @@ class ShikiHighlighter
 {
     public function __construct(protected Shiki $shiki)
     {
-
     }
 
     public function highlight(string $codeBlock, ?string $infoLine = null): string
