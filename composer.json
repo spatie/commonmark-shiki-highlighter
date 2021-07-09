@@ -16,9 +16,9 @@
     ],
     "require": {
         "php": "^8.0",
-        "league/commonmark": "^1.6",
-        "spatie/phpunit-snapshot-assertions": "^4.2",
-        "spatie/shiki-php": "dev-main"
+        "league/commonmark": "^1.6.5",
+        "spatie/phpunit-snapshot-assertions": "^4.2.7",
+        "spatie/shiki-php": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
