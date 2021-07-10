@@ -70,17 +70,17 @@ Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](ht
 
 You can mark lines using the Markdown info tag as highlighted or focused. You can prefix lines with `+ ` or `- ` to mark them as added or deleted.
 
-```php{1,2}{3}
+\`\`\`php{1,2}{3}
 <?php
 echo "We're highlighting line 1 and 2";
 echo "And focusing line 3";
-```
+\`\`\`
 
-```php
+\`\`\`php
 <?php
 + echo "This line is marked as added";
 - echo "This line is marked as deleted";
-```
+\`\`\`
 
 ### More syntax examples for highlighting & focusing
 
