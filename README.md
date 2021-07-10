@@ -64,7 +64,7 @@ function convertToHtml(string $markdown, string $theme): string
 
 The `$theme` argument on `HighlightCodeExtension` expects the name of [one of the many themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md) that Shiki supports.
 
-Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
+Alternatively, you can use a custom theme. Shiki [supports](https://github.com/shikijs/shiki/blob/master/docs/themes.md) any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
 
 ## Marking lines as highlighted, added, deleted and focus
 
@@ -128,6 +128,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
+
+## Alternatives
+
+If you don't want to install and handle Shiki yourself, take a look at [Torchlight](https://torchlight.dev), which can highlight your code with minimal setup.
 
 ## License
 
