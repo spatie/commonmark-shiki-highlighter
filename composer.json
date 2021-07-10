@@ -18,7 +18,7 @@
         "php": "^8.0",
         "league/commonmark": "^1.6.5",
         "spatie/phpunit-snapshot-assertions": "^4.2.7",
-        "spatie/shiki-php": "^1.0",
+        "spatie/shiki-php": "^1.1.1",
         "symfony/process": "^5.3"
     },
     "require-dev": {

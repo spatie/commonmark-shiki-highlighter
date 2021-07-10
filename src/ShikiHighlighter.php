@@ -18,12 +18,23 @@ class ShikiHighlighter
 
         $contents = htmlspecialchars_decode($codeBlockWithoutTags);
 
+        [$contents, $addLines, $deleteLines] = $this->parseAddedAndDeletedLines($contents);
+
         $definition = $this->parseLangAndLines($infoLine);
 
         $language = $definition['lang'] ?? 'php';
 
         try {
-            $highlightedContents = $this->shiki->highlightCode($contents, $language);
+            $highlightedContents = $this->shiki->highlightCode(
+                code: $contents,
+                language: $language,
+                options: [
+                    'addLines' => $addLines,
+                    'deleteLines' => $deleteLines,
+                    'highlightLines' => $definition['highlightLines'],
+                    'focusLines' => $definition['focusLines'],
+                ],
+            );
         } catch (Exception) {
             $highlightedContents = $contents;
         }
@@ -35,44 +46,53 @@ class ShikiHighlighter
     {
         $parsed = [
             'lang' => $language,
-            'lines' => [],
+            'highlightLines' => [],
+            'focusLines' => [],
         ];
 
         if ($language === null) {
             return $parsed;
         }
 
-        $bracePos = strpos($language, '{');
+        $bracePosition = strpos($language, '{');
 
-        if ($bracePos === false) {
+        if ($bracePosition === false) {
             return $parsed;
         }
 
-        $parsed['lang'] = substr($language, 0, $bracePos);
-        $lineDef = substr($language, $bracePos + 1, -1);
-        $lineNums = explode(',', $lineDef);
+        preg_match_all('/{([^}]*)}/', $language, $matches);
 
-        foreach ($lineNums as $lineNum) {
-            if (! str_contains($lineNum, '-')) {
-                $parsed['lines'][intval($lineNum)] = true;
-
-                continue;
-            }
-
-            $extremes = explode('-', $lineNum);
-
-            if (count($extremes) !== 2) {
-                continue;
-            }
-
-            $start = intval($extremes[0]);
-            $end = intval($extremes[1]);
-
-            foreach (range($start, $end) as $i) {
-                $parsed['lines'][$i] = true;
-            }
-        }
+        $parsed['lang'] = substr($language, 0, $bracePosition);
+        $parsed['highlightLines'] = array_map('trim', explode(',', $matches[1][0] ?? ''));
+        $parsed['focusLines'] = array_map('trim', explode(',', $matches[1][1] ?? ''));
 
         return $parsed;
+    }
+
+    private function parseAddedAndDeletedLines(string $contents): array
+    {
+        $addLines = [];
+        $deleteLines = [];
+
+        $contentLines = explode("\n", $contents);
+        $contentLines = array_map(function (string $line, int $index) use (&$addLines, &$deleteLines) {
+            if (str_starts_with($line, '+ ')) {
+                $addLines[] = $index + 1;
+                $line = substr($line, 2);
+            }
+
+            if (str_starts_with($line, '- ')) {
+                $deleteLines[] = $index + 1;
+                $line = substr($line, 2);
+            }
+
+            return $line;
+        }, $contentLines, array_keys($contentLines));
+
+        return [
+            implode("\n", $contentLines),
+            $addLines,
+            $deleteLines,
+        ];
     }
 }
