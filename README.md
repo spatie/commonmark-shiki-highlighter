@@ -64,7 +64,43 @@ function convertToHtml(string $markdown, string $theme): string
 
 The `$theme` argument on `HighlightCodeExtension` expects the name of [one of the many themes](https://github.com/shikijs/shiki/blob/master/docs/themes.md) that Shiki supports.
 
-Alternatively, you can use a custom theme. Shiki supports any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
+Alternatively, you can use a custom theme. Shiki [supports](https://github.com/shikijs/shiki/blob/master/docs/themes.md) any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes). You can load a theme simply by passing an absolute path of a theme file to the `$theme` argument.
+
+## Marking lines as highlighted, added, deleted and focus
+
+You can mark lines using the Markdown info tag as highlighted or focused. You can prefix lines with `+ ` or `- ` to mark them as added or deleted.
+
+```md
+```php{1,2}{3}
+<?php
+echo "We're highlighting line 1 and 2";
+echo "And focusing line 3";
+```
+
+```md
+```php
+<?php
++ echo "This line is marked as added";
+- echo "This line is marked as deleted";
+```
+
+### More syntax examples for highlighting & focusing
+
+Line numbers start at 1.
+
+\`\`\`php - Don't highlight any lines  
+
+\`\`\`php{4} - Highlight just line 4  
+\`\`\`php{4-6} - Highlight the range of lines from 4 to 6 (inclusive)  
+\`\`\`php{1,5} - Highlight just lines 1 and 5 on their own  
+\`\`\`php{1-3,5} - Highlight 1 through 3 and then 5 on its own  
+\`\`\`php{5,7,2-3} - The order of lines don't matter. However, specifying 3-2 will not work.
+
+\`\`\`php{}{4} - Focus just line 4
+\`\`\`php{}{4-6} - Focus the range of lines from 4 to 6 (inclusive)  
+\`\`\`php{}{1,5} - Focus just lines 1 and 5 on their own  
+\`\`\`php{}{1-3,5} - Focus 1 through 3 and then 5 on its own  
+\`\`\`php{}{5,7,2-3} - The order of lines don't matter. However, specifying 3-2 will not work.
 
 ## A word on performance
 
@@ -92,6 +128,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
+
+## Alternatives
+
+If you don't want to install and handle Shiki yourself, take a look at [Torchlight](https://torchlight.dev), which can highlight your code with minimal setup.
 
 ## License
 
