@@ -71,6 +71,7 @@ Alternatively, you can use a custom theme. Shiki [supports](https://github.com/s
 ## Marking lines as highlighted, added, deleted and focus
 
 You can mark lines using the Markdown info tag as highlighted or focused. You can prefix lines with `+ ` or `- ` to mark them as added or deleted.
+In the first pair of brackets, you can specify line numbers that should be highlighted. In an optional second pair you can specify which lines should be focused on.
 
 ```md
 ```php{1,2}{3}
@@ -103,6 +104,37 @@ Line numbers start at 1.
 \`\`\`php{}{1,5} - Focus just lines 1 and 5 on their own  
 \`\`\`php{}{1-3,5} - Focus 1 through 3 and then 5 on its own  
 \`\`\`php{}{5,7,2-3} - The order of lines don't matter. However, specifying 3-2 will not work.
+
+### Styling highlighted lines
+
+When you mark lines as highlighted, added, deleted or focused, Shiki will apply some classes to those lines. You should add some CSS to your page to style those lines. Here's a bit of example CSS to get you started.
+
+```
+.shiki .highlight {
+    background-color: hsl(197, 88%, 94%);
+    padding: 3px 0;
+}
+
+.shiki .add {
+    background-color: hsl(136, 100%, 96%);
+    padding: 3px 0;
+}
+
+.shiki .del {
+    background-color: hsl(354, 100%, 96%);
+    padding: 3px 0;
+}
+
+.shiki.focus .line:not(.focus) {
+    transition: all 250ms;
+    filter: blur(2px);
+}
+
+.shiki.focus:hover .line {
+    transition: all 250ms;
+    filter: blur(0);
+}
+```
 
 ## A word on performance
 
