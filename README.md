@@ -109,7 +109,7 @@ Line numbers start at 1.
 
 When you mark lines as highlighted, added, deleted or focused, Shiki will apply some classes to those lines. You should add some CSS to your page to style those lines. Here's a bit of example CSS to get you started.
 
-```
+```css
 .shiki .highlight {
     background-color: hsl(197, 88%, 94%);
     padding: 3px 0;
