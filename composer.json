@@ -1,6 +1,7 @@
 {
     "name": "spatie/commonmark-shiki-highlighter",
     "description": "Highlight code blocks with league/commonmark and Shiki",
+    "type": "commonmark-extension",
     "keywords": [
         "spatie",
         "commonmark-shiki-highlighter"
