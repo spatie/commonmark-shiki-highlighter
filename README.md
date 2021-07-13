@@ -12,6 +12,8 @@ This package also ships with the following extra languages, on top of the [100+ 
 - Antlers
 - Blade
 
+If you're using Laravel, make sure to look at our [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown) package which offers easy integration with Shiki in laravel projects.
+
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/commonmark-shiki-highlighter.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/commonmark-shiki-highlighter)
