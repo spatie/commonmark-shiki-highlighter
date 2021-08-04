@@ -2,13 +2,13 @@
 
 namespace Spatie\CommonMarkShikiHighlighter\Renderers;
 
-use League\CommonMark\Block\Element\AbstractBlock;
-use League\CommonMark\Block\Renderer\BlockRendererInterface;
-use League\CommonMark\Block\Renderer\IndentedCodeRenderer as BaseIndentedCodeRenderer;
-use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\Extension\CommonMark\Renderer\Block\IndentedCodeRenderer as BaseIndentedCodeRenderer;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
 
-class IndentedCodeRenderer implements BlockRendererInterface
+class IndentedCodeRenderer implements NodeRendererInterface
 {
     protected ShikiHighlighter $highlighter;
 
@@ -22,11 +22,10 @@ class IndentedCodeRenderer implements BlockRendererInterface
     }
 
     public function render(
-        AbstractBlock $block,
-        ElementRendererInterface $htmlRenderer,
-        $inTightList = false
+        Node $node,
+        ChildNodeRendererInterface $childRenderer
     ): string {
-        $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
+        $element = $this->baseRenderer->render($node, $childRenderer);
 
         $element->setContents(
             $this->highlighter->highlight($element->getContents())

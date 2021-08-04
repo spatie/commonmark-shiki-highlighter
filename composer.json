@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "league/commonmark": "^1.6.5",
+        "league/commonmark": "^2.0",
         "spatie/shiki-php": "^1.1.1",
         "symfony/process": "^5.3"
     },

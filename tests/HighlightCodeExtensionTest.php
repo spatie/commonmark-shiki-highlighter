@@ -2,8 +2,9 @@
 
 namespace Spatie\CommonMarkShikiHighlighter\Tests;
 
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\MarkdownConverter;
 use PHPUnit\Framework\TestCase;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\Snapshots\MatchesSnapshots;
@@ -72,10 +73,11 @@ class HighlightCodeExtensionTest extends TestCase
 
     protected function convertToHtml(string $markdown): string
     {
-        $environment = Environment::createCommonMarkEnvironment()
+        $environment = (new Environment())
+            ->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new HighlightCodeExtension('nord'));
 
-        $commonMarkConverter = new CommonMarkConverter(environment: $environment);
+        $commonMarkConverter = new MarkdownConverter(environment: $environment);
 
         return $commonMarkConverter->convertToHtml($markdown);
     }

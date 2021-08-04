@@ -2,6 +2,10 @@
 
 All notable changes to `commonmark-shiki-highlighter` will be documented in this file.
 
+## 2.0.0 - 2021-08-04
+
+- upgrade to support commonmark 2.0
+
 ## 1.1.1 - 2021-07-11
 
 - improve deps
