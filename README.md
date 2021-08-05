@@ -47,16 +47,18 @@ yarn add shiki
 Here's how we can create a function that can convert markdown to HTML with all code snippets highlighted. Inside the function will create a new `CommonMarkConverter` that uses the `HighlightCodeExtension` provided by this package.
 
 ```php
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\MarkdownConverter;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 
 function convertToHtml(string $markdown, string $theme): string
 {
-    $environment = Environment::createCommonMarkEnvironment()
+    $environment = (new Environment())
+        ->addExtension(new CommonMarkCoreExtension())
         ->addExtension(new HighlightCodeExtension($theme));
 
-    $commonMarkConverter = new CommonMarkConverter(environment: $environment);
+    $commonMarkConverter = new MarkdownConverter(environment: $environment);
 
     return $commonMarkConverter->convertToHtml($markdown);
 }

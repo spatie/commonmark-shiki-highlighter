@@ -2,15 +2,15 @@
 
 namespace Spatie\CommonMarkShikiHighlighter\Renderers;
 
-use League\CommonMark\Block\Element\AbstractBlock;
-use League\CommonMark\Block\Element\FencedCode;
-use League\CommonMark\Block\Renderer\BlockRendererInterface;
-use League\CommonMark\Block\Renderer\FencedCodeRenderer as BaseFencedCodeRenderer;
-use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
+use League\CommonMark\Extension\CommonMark\Renderer\Block\FencedCodeRenderer as BaseFencedCodeRenderer;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
 use League\CommonMark\Util\Xml;
 use Spatie\CommonMarkShikiHighlighter\ShikiHighlighter;
 
-class FencedCodeRenderer implements BlockRendererInterface
+class FencedCodeRenderer implements NodeRendererInterface
 {
     protected ShikiHighlighter $highlighter;
 
@@ -24,16 +24,15 @@ class FencedCodeRenderer implements BlockRendererInterface
     }
 
     public function render(
-        AbstractBlock $block,
-        ElementRendererInterface $htmlRenderer,
-        $inTightList = false
+        Node $node,
+        ChildNodeRendererInterface $childRenderer
     ): string {
-        $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
+        $element = $this->baseRenderer->render($node, $childRenderer);
 
         $element->setContents(
             $this->highlighter->highlight(
                 $element->getContents(),
-                $this->getSpecifiedLanguage($block)
+                $this->getSpecifiedLanguage($node)
             )
         );
 
