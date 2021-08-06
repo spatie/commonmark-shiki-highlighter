@@ -44,7 +44,7 @@ yarn add shiki
 
 ## Usage
 
-Here's how we can create a function that can convert markdown to HTML with all code snippets highlighted. Inside the function will create a new `CommonMarkConverter` that uses the `HighlightCodeExtension` provided by this package.
+Here's how we can create a function that can convert markdown to HTML with all code snippets highlighted. Inside the function will create a new `MarkdownConverter` that uses the `HighlightCodeExtension` provided by this package.
 
 ```php
 use League\CommonMark\Environment\Environment;
@@ -58,9 +58,9 @@ function convertToHtml(string $markdown, string $theme): string
         ->addExtension(new CommonMarkCoreExtension())
         ->addExtension(new HighlightCodeExtension($theme));
 
-    $commonMarkConverter = new MarkdownConverter(environment: $environment);
+    $markdownConverter = new MarkdownConverter(environment: $environment);
 
-    return $commonMarkConverter->convertToHtml($markdown);
+    return $markdownConverter->convertToHtml($markdown);
 }
 ```
 
