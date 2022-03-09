@@ -1,3 +1,6 @@
+
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
+
 # Highlight code blocks with league/commonmark and Shiki
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
