@@ -36,7 +36,7 @@ class ShikiHighlighter
                 ],
             );
         } catch (Exception) {
-            $highlightedContents = $contents;
+            $highlightedContents = $codeBlock;
         }
 
         return $highlightedContents;
