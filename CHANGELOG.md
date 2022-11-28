@@ -2,6 +2,12 @@
 
 All notable changes to `commonmark-shiki-highlighter` will be documented in this file.
 
+## 2.1.1 - 2022-11-28
+
+- Fixes a potential XSS issue when highlighting fails
+
+**Full Changelog**: https://github.com/spatie/commonmark-shiki-highlighter/compare/2.1.0...2.1.1
+
 ## 2.1.0 - 2022-01-13
 
 ## What's Changed
