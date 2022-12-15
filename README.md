@@ -104,7 +104,7 @@ Line numbers start at 1.
 \`\`\`php{1-3,5} - Highlight 1 through 3 and then 5 on its own  
 \`\`\`php{5,7,2-3} - The order of lines don't matter. However, specifying 3-2 will not work.
 
-\`\`\`php{}{4} - Focus just line 4
+\`\`\`php{}{4} - Focus just line 4  
 \`\`\`php{}{4-6} - Focus the range of lines from 4 to 6 (inclusive)  
 \`\`\`php{}{1,5} - Focus just lines 1 and 5 on their own  
 \`\`\`php{}{1-3,5} - Focus 1 through 3 and then 5 on its own  
