@@ -33,7 +33,7 @@ You can install the package via composer:
 composer require spatie/commonmark-shiki-highlighter
 ```
 
-In your project, you must have the JavaScript package `shiki` installed, otherwise the `<pre>` element will not be present in the output. 
+In your project, you must have the JavaScript package [`shiki`](https://github.com/shikijs/shiki) installed, otherwise the `<pre>` element will not be present in the output. 
 
 You can install it via npm
 
