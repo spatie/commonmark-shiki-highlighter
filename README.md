@@ -61,12 +61,21 @@ function convertToHtml(string $markdown, string $theme): string
 {
     $environment = (new Environment())
         ->addExtension(new CommonMarkCoreExtension())
-        ->addExtension(new HighlightCodeExtension($theme));
+        ->addExtension(new HighlightCodeExtension(theme: $theme));
 
     $markdownConverter = new MarkdownConverter(environment: $environment);
 
     return $markdownConverter->convertToHtml($markdown);
 }
+```
+
+Alternatively, you can inject an already instantiated `Shiki` instance into the `HighlightCodeExtension`:
+
+```php
+use Spatie\ShikiPhp\Shiki;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
+
+$environment->addExtension(new HighlightCodeExtension(shiki: new Shiki()));
 ```
 
 ## Using themes

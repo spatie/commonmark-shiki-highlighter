@@ -7,6 +7,7 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use PHPUnit\Framework\TestCase;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
+use Spatie\ShikiPhp\Shiki;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class HighlightCodeExtensionTest extends TestCase
@@ -69,6 +70,27 @@ class HighlightCodeExtensionTest extends TestCase
         $highlightedCode = $this->convertToHtml($markdown);
 
         $this->assertMatchesSnapshot($highlightedCode);
+    }
+
+    /** @test */
+    public function can_create_with_a_shiki_instance()
+    {
+        $markdown = <<<MD
+        Here is a piece of indented PHP code
+
+            <?php echo "Hello World"; ?>
+
+        MD;
+
+        $environment = (new Environment())
+            ->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new HighlightCodeExtension(shiki: new Shiki()));
+
+        $commonMarkConverter = new MarkdownConverter(environment: $environment);
+
+        $highlightedCode = $commonMarkConverter->convertToHtml($markdown);
+
+        $this->assertMatchesSnapshot((string) $highlightedCode);
     }
 
     protected function convertToHtml(string $markdown): string
