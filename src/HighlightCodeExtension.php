@@ -12,19 +12,17 @@ use Spatie\ShikiPhp\Shiki;
 
 class HighlightCodeExtension implements ExtensionInterface
 {
-    public function __construct(
-        protected string $theme
-    ) {
+    protected ShikiHighlighter $shikiHighlighter;
+
+    public function __construct(string $theme = 'nord', Shiki $shiki = null)
+    {
+        $this->shikiHighlighter = new ShikiHighlighter($shiki ?? new Shiki($theme));
     }
 
     public function register(EnvironmentBuilderInterface $environment): void
     {
-        $shiki = new Shiki(defaultTheme: $this->theme);
-
-        $codeBlockHighlighter = new ShikiHighlighter($shiki);
-
         $environment
-            ->addRenderer(FencedCode::class, new FencedCodeRenderer($codeBlockHighlighter), 10)
-            ->addRenderer(IndentedCode::class, new IndentedCodeRenderer($codeBlockHighlighter), 10);
+            ->addRenderer(FencedCode::class, new FencedCodeRenderer($this->shikiHighlighter), 10)
+            ->addRenderer(IndentedCode::class, new IndentedCodeRenderer($this->shikiHighlighter), 10);
     }
 }
