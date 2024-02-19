@@ -14,13 +14,6 @@ class HighlightCodeExtensionTest extends TestCase
 {
     use MatchesSnapshots;
 
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        ray()->newScreen($this->getName());
-    }
-
     /** @test */
     public function it_can_highlight_a_piece_of_fenced_code()
     {
