@@ -2,6 +2,12 @@
 
 All notable changes to `commonmark-shiki-highlighter` will be documented in this file.
 
+## 2.3.0 - 2024-02-19
+
+* Change dependency to shiki ^2.0
+
+**Full Changelog**: https://github.com/spatie/commonmark-shiki-highlighter/compare/2.2.0...2.3.0
+
 ## 2.2.0 - 2024-02-17
 
 ### What's Changed
