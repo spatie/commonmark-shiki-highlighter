@@ -14,9 +14,9 @@ class HighlightCodeExtension implements ExtensionInterface
 {
     protected ShikiHighlighter $shikiHighlighter;
 
-    public function __construct(string $theme = 'nord', Shiki $shiki = null)
+    public function __construct(string $theme = 'nord', Shiki $shiki = null, bool $throw = false)
     {
-        $this->shikiHighlighter = new ShikiHighlighter($shiki ?? new Shiki($theme));
+        $this->shikiHighlighter = new ShikiHighlighter($shiki ?? new Shiki($theme), $throw);
     }
 
     public function register(EnvironmentBuilderInterface $environment): void

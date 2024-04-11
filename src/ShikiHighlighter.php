@@ -8,7 +8,8 @@ use Spatie\ShikiPhp\Shiki;
 class ShikiHighlighter
 {
     public function __construct(
-        protected Shiki $shiki
+        protected Shiki $shiki,
+        protected bool $throw = false,
     ) {
     }
 
@@ -35,7 +36,11 @@ class ShikiHighlighter
                     'focusLines' => $definition['focusLines'],
                 ],
             );
-        } catch (Exception) {
+        } catch (Exception $e) {
+            if ($this->throw) {
+                throw $e;
+            }
+
             $highlightedContents = $codeBlock;
         }
 

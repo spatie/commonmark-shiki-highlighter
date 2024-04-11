@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\ShikiPhp\Shiki;
 use Spatie\Snapshots\MatchesSnapshots;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class HighlightCodeExtensionTest extends TestCase
 {
@@ -81,9 +82,51 @@ class HighlightCodeExtensionTest extends TestCase
 
         $commonMarkConverter = new MarkdownConverter(environment: $environment);
 
-        $highlightedCode = $commonMarkConverter->convertToHtml($markdown);
+        $highlightedCode = $commonMarkConverter->convert($markdown);
 
         $this->assertMatchesSnapshot((string) $highlightedCode);
+    }
+
+    /** @test */
+    public function it_will_not_throw_by_default()
+    {
+        $markdown = <<<MD
+        Here is a piece of fenced PHP code
+        ```phpp
+        <?php echo "Hello World"; ?>
+        ```
+        MD;
+
+        $environment = (new Environment())
+            ->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new HighlightCodeExtension(shiki: new Shiki()));
+
+        $commonMarkConverter = new MarkdownConverter(environment: $environment);
+
+        $commonMarkConverter->convert($markdown);
+
+        $this->expectNotToPerformAssertions();
+    }
+
+    /** @test */
+    public function can_throw_on_exceptions()
+    {
+        $markdown = <<<MD
+        Here is a piece of fenced PHP code
+        ```phpp
+        <?php echo "Hello World"; ?>
+        ```
+        MD;
+
+        $environment = (new Environment())
+            ->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new HighlightCodeExtension(shiki: new Shiki(), throw: true));
+
+        $commonMarkConverter = new MarkdownConverter(environment: $environment);
+
+        $this->expectException(ProcessFailedException::class);
+
+        $commonMarkConverter->convert($markdown);
     }
 
     protected function convertToHtml(string $markdown): string
@@ -94,6 +137,6 @@ class HighlightCodeExtensionTest extends TestCase
 
         $commonMarkConverter = new MarkdownConverter(environment: $environment);
 
-        return $commonMarkConverter->convertToHtml($markdown);
+        return $commonMarkConverter->convert($markdown);
     }
 }

@@ -149,6 +149,16 @@ When you mark lines as highlighted, added, deleted or focused, Shiki will apply 
 }
 ```
 
+## Throwing on exceptions
+
+By default, the Shiki highlighter will not throw when something goes wrong and just return the non-highlighted code. If you want to throw the exception anyway, instantiate the highlighter with `throw` as `true`:
+
+```php
+$environment = (new Environment())
+    ->addExtension(new CommonMarkCoreExtension())
+    ->addExtension(new HighlightCodeExtension(theme: $theme, throw: true));
+```
+
 ## A word on performance
 
 Highlighting with Shiki is a resource intensive process. We highly recommend using some form of caching.
