@@ -14,7 +14,10 @@ class HighlightCodeExtension implements ExtensionInterface
 {
     protected ShikiHighlighter $shikiHighlighter;
 
-    public function __construct(string $theme = 'nord', Shiki $shiki = null, bool $throw = false)
+    /**
+     * @param string|array<string, string> $theme Can be a single theme or an array with a light and a dark theme.
+     */
+    public function __construct(mixed $theme = 'nord', Shiki $shiki = null, bool $throw = false)
     {
         $this->shikiHighlighter = new ShikiHighlighter($shiki ?? new Shiki($theme), $throw);
     }
