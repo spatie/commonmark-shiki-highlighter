@@ -67,6 +67,21 @@ class HighlightCodeExtensionTest extends TestCase
     }
 
     /** @test */
+    public function it_can_use_dual_themes()
+    {
+        $markdown = <<<MD
+        Here is a piece of fenced PHP code
+        ```php
+        <?php echo "Hello World"; ?>
+        ```
+        MD;
+
+        $highlightedCode = $this->convertToHtml($markdown, ['dark' => 'github-dark', 'light' => 'github-light']);
+
+        $this->assertMatchesSnapshot($highlightedCode);
+    }
+
+    /** @test */
     public function can_create_with_a_shiki_instance()
     {
         $markdown = <<<MD
@@ -129,11 +144,11 @@ class HighlightCodeExtensionTest extends TestCase
         $commonMarkConverter->convert($markdown);
     }
 
-    protected function convertToHtml(string $markdown): string
+    protected function convertToHtml(string $markdown, mixed $theme = 'nord'): string
     {
         $environment = (new Environment())
             ->addExtension(new CommonMarkCoreExtension())
-            ->addExtension(new HighlightCodeExtension('nord'));
+            ->addExtension(new HighlightCodeExtension($theme));
 
         $commonMarkConverter = new MarkdownConverter(environment: $environment);
 
