@@ -2,6 +2,18 @@
 
 All notable changes to `commonmark-shiki-highlighter` will be documented in this file.
 
+## 2.5.0 - 2024-11-12
+
+### What's Changed
+
+* feat: support (at least) dual themes by @Barbapapazes in https://github.com/spatie/commonmark-shiki-highlighter/pull/13
+
+### New Contributors
+
+* @Barbapapazes made their first contribution in https://github.com/spatie/commonmark-shiki-highlighter/pull/13
+
+**Full Changelog**: https://github.com/spatie/commonmark-shiki-highlighter/compare/2.4.0...2.5.0
+
 ## 2.4.0 - 2024-04-11
 
 * Add a way to throw on exceptions
