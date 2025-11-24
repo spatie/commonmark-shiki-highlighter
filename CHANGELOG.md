@@ -2,6 +2,19 @@
 
 All notable changes to `commonmark-shiki-highlighter` will be documented in this file.
 
+## 2.5.2 - 2025-11-24
+
+### What's Changed
+
+* Update issue template by @AlexVanderbist in https://github.com/spatie/commonmark-shiki-highlighter/pull/15
+* Added Symfony 8 support to all symfony/* packages. by @thecaliskan in https://github.com/spatie/commonmark-shiki-highlighter/pull/18
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/commonmark-shiki-highlighter/pull/15
+
+**Full Changelog**: https://github.com/spatie/commonmark-shiki-highlighter/compare/2.5.1...2.5.2
+
 ## 2.5.1 - 2025-01-13
 
 ### What's Changed
