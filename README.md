@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
 [![Tests](https://github.com/spatie/commonmark-shiki-highlighter/actions/workflows/run-tests.yml/badge.svg)](https://github.com/spatie/commonmark-shiki-highlighter/actions/workflows/run-tests.yml)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/commonmark-shiki-highlighter/Check%20&%20fix%20styling?label=code%20style)](https://github.com/spatie/commonmark-shiki-highlighter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![GitHub Code Style Action Status](https://github.com/spatie/commonmark-shiki-highlighter/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/spatie/commonmark-shiki-highlighter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/commonmark-shiki-highlighter.svg?style=flat-square)](https://packagist.org/packages/spatie/commonmark-shiki-highlighter)
 
 This package contains a block renderer for [league/commonmark](https://github.com/thephpleague/commonmark) to highlight code blocks using [Shiki PHP](https://github.com/spatie/shiki-php).
